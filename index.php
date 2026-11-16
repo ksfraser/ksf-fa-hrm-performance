@@ -1,17 +1,11 @@
 <?php
-declare(strict_types=1);
 
-use Ksfraser\FrontAccounting\HRM\Performance\App\PerformanceFrontController;
-use Ksfraser\FrontAccounting\HRM\Performance\App\PerformanceAppShell;
+require_once __DIR__ . '/bootstrap.php';
 
 $path_to_root = '../..';
 
-if (file_exists(__DIR__ . '/bootstrap.php')) {
-    require_once __DIR__ . '/bootstrap.php';
-}
-
-$frontController = new PerformanceFrontController(
-    new PerformanceAppShell(),
+$frontController = new \Ksfraser\FrontAccounting\HRM\Performance\App\PerformanceFrontController(
+    new \Ksfraser\FrontAccounting\HRM\Performance\App\PerformanceAppShell(),
     'SA_PERFORMANCE_VIEW',
     $path_to_root
 );
