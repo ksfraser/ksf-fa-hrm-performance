@@ -8,11 +8,11 @@ require_once __DIR__ . '/includes/common.inc';
 require_once __DIR__ . '/includes/events.inc';
 use ksfraser\RelatedTo\DTO\RelatedRecordDto;
 define('SS_ksf_FA_HRM_Performance', 191 << 8);
-if (!defined('SA_PERFORMANCE_VIEW')) {
-    define('SA_PERFORMANCE_VIEW', SS_ksf_FA_HRM_Performance | 1);
-    define('SA_PERFORMANCE_MANAGE', SS_ksf_FA_HRM_Performance | 2);
-    define('SA_PERFORMANCE_REVIEW', SS_ksf_FA_HRM_Performance | 3);
-    define('SA_PERFORMANCE_ADMIN', SS_ksf_FA_HRM_Performance | 4);
+if (!defined('SA_HRM_PERFORMANCE_VIEW')) {
+    define('SA_HRM_PERFORMANCE_VIEW', SS_ksf_FA_HRM_Performance | 1);
+    define('SA_HRM_PERFORMANCE_MANAGE', SS_ksf_FA_HRM_Performance | 2);
+    define('SA_HRM_PERFORMANCE_REVIEW', SS_ksf_FA_HRM_Performance | 3);
+    define('SA_HRM_PERFORMANCE_ADMIN', SS_ksf_FA_HRM_Performance | 4);
 }
 class hooks_ksf_FA_HRM_Performance extends hooks {
     const RESPONDERS = array('RELATED_TO_FIELDS', 'PERFORMANCE_RESOLVE', 'PERFORMANCE_FIELDS', 'PERFORMANCE_LIST');
@@ -22,10 +22,10 @@ class hooks_ksf_FA_HRM_Performance extends hooks {
     function install_options($app) { }
     function install_access() {
         $security_sections[SS_ksf_FA_HRM_Performance] = _("Performance Management");
-        $security_areas['SA_PERFORMANCE_VIEW'] = array(SA_PERFORMANCE_VIEW, _("View performance reviews"));
-        $security_areas['SA_PERFORMANCE_MANAGE'] = array(SA_PERFORMANCE_MANAGE, _("Manage performance reviews"));
-        $security_areas['SA_PERFORMANCE_REVIEW'] = array(SA_PERFORMANCE_REVIEW, _("Conduct reviews"));
-        $security_areas['SA_PERFORMANCE_ADMIN'] = array(SA_PERFORMANCE_ADMIN, _("Administer performance"));
+        $security_areas['SA_HRM_PERFORMANCE_VIEW'] = array(SA_HRM_PERFORMANCE_VIEW, _("View performance reviews"));
+        $security_areas['SA_HRM_PERFORMANCE_MANAGE'] = array(SA_HRM_PERFORMANCE_MANAGE, _("Manage performance reviews"));
+        $security_areas['SA_HRM_PERFORMANCE_REVIEW'] = array(SA_HRM_PERFORMANCE_REVIEW, _("Conduct reviews"));
+        $security_areas['SA_HRM_PERFORMANCE_ADMIN'] = array(SA_HRM_PERFORMANCE_ADMIN, _("Administer performance"));
         return array($security_areas, $security_sections);
     }
     function activate_extension($company, $check_only = true) {
@@ -42,10 +42,10 @@ class hooks_ksf_FA_HRM_Performance extends hooks {
     public function getModuleConstants(&$data, $opts = null) {
         $data['constants'] = array(
             'SS_ksf_FA_HRM_Performance' => SS_ksf_FA_HRM_Performance,
-            'SA_PERFORMANCE_VIEW' => SA_PERFORMANCE_VIEW,
-            'SA_PERFORMANCE_MANAGE' => SA_PERFORMANCE_MANAGE,
-            'SA_PERFORMANCE_REVIEW' => SA_PERFORMANCE_REVIEW,
-            'SA_PERFORMANCE_ADMIN' => SA_PERFORMANCE_ADMIN,
+            'SA_HRM_PERFORMANCE_VIEW' => SA_HRM_PERFORMANCE_VIEW,
+            'SA_HRM_PERFORMANCE_MANAGE' => SA_HRM_PERFORMANCE_MANAGE,
+            'SA_HRM_PERFORMANCE_REVIEW' => SA_HRM_PERFORMANCE_REVIEW,
+            'SA_HRM_PERFORMANCE_ADMIN' => SA_HRM_PERFORMANCE_ADMIN,
         );
         return true;
     }
